@@ -38,8 +38,29 @@ Market Place
       </table>
    </div>
    <div class="col-4">
+
+     <!-- display owners item in owners account -->
+
      <h2>Owned Item</h2>
      <p>click to add your product/service to sell on the market</p>
+     <br>
+     <div class="row">
+       {% for owned_item in owned_items %}
+       {% include 'includes/owned_item_modals.html' %}
+        <div class="col-md-6">
+          <div style="margin-bottom: 5px" class="card text-center bg-dark">
+            <div class="card-body">
+              <h5 class="card-title">{{ owned_item.name }}</h5>
+              <button type="button" class="btn btn-outline-danger" style="margin-bottom:5px" data-toggle="modal" data-target="#Modal-SaleConfirm-{{ owned_item.id }}">
+                Sell this Item
+            </button>
+            <p class="card-text"<strong>This Item cost ${{ owned_item.price }}</strong></p>
+            </div>
+
+          </div>
+        </div>
+       {% endfor %}
+     </div>
    </div>
 </div>
 {% endblock %}
